@@ -29,7 +29,25 @@ const Game = () => {
       setstarted(true);
     }
 
+   
+  const correctCount = value
+    .split("")
+    .filter((char, index) => char === TEXT[index]).length;
+
+  const newAccuracy =
+    value.length === 0
+      ? 0
+      : Math.round((correctCount / value.length) * 100);
+
+  const minutes = time / 60;
+  const newWpm =
+    minutes > 0 ? Math.round(value.length / 5 / minutes) : 0;
+
+  setAccuracy(newAccuracy);
+  setWpm(newWpm);
+
     if (value.length === TEXT.length) {
+      setGameOver(true);
        navigate("/completed");
     }
   };
@@ -51,35 +69,22 @@ const Game = () => {
     }
   };
 
-  const correctCount = inputText.split("").filter((char, index) => {
-    return char === TEXT[index];
-  }).length;
 
-  const accuracy =
-    inputText.length === 0
-      ? 0
-      : Math.round((correctCount / inputText.length) * 100);
-  const minutes = time / 60;
+useEffect(() => {
+  let interval: ReturnType<typeof setInterval>;
 
-  const wpm = minutes > 0 ? Math.round(inputText.length / 5 / minutes) : 0;
+  if (started && !gameOver) {
+    interval = setInterval(() => {
+      settime(prev => {
+        const newTime = prev + 1;
+        setTime(newTime); 
+        return newTime;
+      });
+    }, 1000);
+  }
 
-  useEffect(() => {
-    setTime(time);
-    setWpm(wpm);
-    setAccuracy(accuracy);
-  }, [time, wpm, accuracy]);
-
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
-    if (started && !gameOver) {
-      interval = setInterval(() => {
-        settime((prev) => prev + 1);
-      }, 1000);
-    }
-
-    return () => clearInterval(interval);
-  }, [started, gameOver]);
-
+  return () => clearInterval(interval);
+}, [started, gameOver]);
 
 
   return (

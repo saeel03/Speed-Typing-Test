@@ -7,6 +7,7 @@ import { Button } from 'antd';
 const Completed = () => {
 
   const {wpm,accuracy,time} = useTypingStore();
+  const {reset} =useTypingStore();
   const navigate=useNavigate();
   return (
 
@@ -16,7 +17,10 @@ const Completed = () => {
       <h1>WPM: {wpm}</h1>
       <h1>Accuracy: {accuracy}</h1>
       <h1>Time: {time}s</h1>
-      <Button onClick={()=>{ navigate("/")}}> Go again</Button>
+      <Button onClick={()=>{ 
+        reset()
+        navigate("/")}}> 
+        Go again</Button>
 
 
     
