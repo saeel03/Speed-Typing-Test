@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ChangeEvent } from "react";
+import  { useEffect, useState, type ChangeEvent } from "react";
 import { useTypingStore } from "../store/useTypingStore";
 import { useNavigate } from "react-router-dom";
 

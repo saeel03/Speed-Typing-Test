@@ -1,4 +1,4 @@
-import React from 'react'
+
 import HeaderLogo from './HeaderLogo'
 
 const HeaderMain = () => {
