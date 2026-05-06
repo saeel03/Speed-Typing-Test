@@ -3,7 +3,7 @@ import { useTypingStore } from "../store/useTypingStore";
 import { useNavigate } from "react-router-dom";
 
 //const TEXT: string ='The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial connections far more extensive than previously hypothesized. "We\'ve underestimated ancient peoples\' navigational capabilities and their appetite for luxury goods," the lead researcher observed. "Globalization isn\'t as modern as we assume."';
-const TEXT: string = "the Quick Brown fox Jumps Over the Lazy Dog"
+const TEXT: string = "The Quick Brown fox Jumps Over the Lazy Dog"
 
 const Game = () => {
   const [inputText, setinputText] = useState<string>("");
